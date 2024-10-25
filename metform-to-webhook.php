@@ -11,18 +11,20 @@ Author: Pipelead
 if (file_exists(plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php')) {
   require plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php';
 
-
   $myUpdateChecker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
       'https://github.com/pipelead/metform-to-pipelead/',
       __FILE__,
       'metform-to-pipelead'
   );
 
-  // Usar releases ao invés de tags
+  // Configurar para usar releases
   $myUpdateChecker->getVcsApi()->enableReleaseAssets();
   
-  // Se você quiser usar um branch específico (opcional)
-  // $myUpdateChecker->setBranch('main');
+  // Usar branch main
+  $myUpdateChecker->setBranch('main');
+  
+  // Opcional: definir o tipo de estabilidade
+  $myUpdateChecker->setStabilityFlags(array('stable' => true));
 }
 
 
