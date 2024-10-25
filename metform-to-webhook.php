@@ -10,10 +10,10 @@ Author: Pipelead
 
 if (file_exists(plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php')) {
   require plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php';
-  use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-  $myUpdateChecker = PucFactory::buildUpdateChecker(
-      'https://github.com/seu-usuario/metform-to-pipelead/',
+
+  $myUpdateChecker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+      'https://github.com/pipelead/metform-to-pipelead/',
       __FILE__,
       'metform-to-pipelead'
   );
