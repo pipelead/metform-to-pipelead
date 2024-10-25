@@ -3,7 +3,7 @@
 Plugin Name: Metform to Pipelead
 Plugin URI: https://pipelead.to
 Description: Send Metform submissions to Pipelead
-Version: 0.1
+Version: 0.2
 Author: Pipelead
 */
 

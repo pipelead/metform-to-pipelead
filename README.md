@@ -80,3 +80,6 @@ Para suporte, por favor:
 - Versão inicial do plugin
 - Integração básica com webhook
 - Captura de URL atual e referenciador
+
+### 0.2
+- Atualizador via Github
