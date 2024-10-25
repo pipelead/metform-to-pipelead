@@ -1,0 +1,27 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Vai disparar quando criar uma tag que começa com "v"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create plugin zip
+        run: |
+          zip -r metform-to-pipelead.zip . -x "*.git*" "*.github*"
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: metform-to-pipelead.zip
+          draft: false
+          prerelease: false
