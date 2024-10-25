@@ -3,7 +3,7 @@
 Plugin Name: Metform to Pipelead
 Plugin URI: https://pipelead.to
 Description: Send Metform submissions to Pipelead
-Version: 0.2
+Version: 0.3
 Author: Pipelead
 */
 
@@ -192,6 +192,39 @@ function mtp_settings_page()
         </form>
     </div>
     <?php
+}
+
+// Check for Metform plugin dependency
+function mtp_check_dependencies() {
+  if (!is_plugin_active('metform/metform.php') && !is_plugin_active('metform-pro/metform.php')) {
+      add_action('admin_notices', 'mtp_admin_notice_missing_metform');
+      
+      // Desativa o plugin
+      deactivate_plugins(plugin_basename(__FILE__));
+      
+      // Se estiver tentando ativar o plugin, mostra erro
+      if (isset($_GET['activate'])) {
+          unset($_GET['activate']);
+      }
+  }
+}
+add_action('admin_init', 'mtp_check_dependencies');
+
+// Admin notice HTML
+function mtp_admin_notice_missing_metform() {
+  $message = sprintf(
+      esc_html__('O plugin %1$s requer o plugin Metform instalado e ativado. Por favor, %2$sinstale o Metform%3$s primeiro.', 'metform-to-pipelead'),
+      '<strong>Metform to Pipelead</strong>',
+      '<a href="' . esc_url(admin_url('plugin-install.php?s=metform&tab=search&type=term')) . '">',
+      '</a>'
+  );
+  
+  printf('<div class="error"><p>%1$s</p></div>', $message);
+}
+
+// Adicione isso para ter certeza que is_plugin_active está disponível
+if (!function_exists('is_plugin_active')) {
+  require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 }
 
 // Hook into Metform submission

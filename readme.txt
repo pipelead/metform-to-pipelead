@@ -22,3 +22,6 @@ Envie dados do Metform direto para o Pipelead.
 
 = 0.2 =
 * Atualizador via Github
+
+= 0.3 = 
+* Mensagem caso não tenha o Metform instalado
