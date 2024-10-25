@@ -3,7 +3,7 @@
 Plugin Name: Metform to Pipelead
 Plugin URI: https://pipelead.to
 Description: Send Metform submissions to Pipelead
-Version: 0.3
+Version: 0.4
 Author: Pipelead
 */
 
@@ -18,13 +18,11 @@ if (file_exists(plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update
   );
 
   // Configurar para usar releases
-  $myUpdateChecker->getVcsApi()->enableReleaseAssets();
+  $myUpdateChecker->getVcsApi()->enableReleaseAssets('/\.zip($|[?&#])/i');
   
   // Usar branch main
   $myUpdateChecker->setBranch('main');
   
-  // Opcional: definir o tipo de estabilidade
-  $myUpdateChecker->setStabilityFlags(array('stable' => true));
 }
 
 

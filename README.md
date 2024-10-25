@@ -73,16 +73,3 @@ Este projeto está licenciado sob a GPL v2 ou posterior - veja o arquivo [LICENS
 Para suporte, por favor:
 1. Abra uma [issue](https://github.com/seu-usuario/metform-to-pipelead/issues) no GitHub
 2. Entre em contato com o suporte do Pipelead para questões relacionadas à plataforma
-
-## Changelog
-
-### 0.1
-- Versão inicial do plugin
-- Integração básica com webhook
-- Captura de URL atual e referenciador
-
-### 0.2
-- Atualizador via Github
-
-### 0.3
-- Mensagem caso não tenha o Metform instalado
